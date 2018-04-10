@@ -1,0 +1,44 @@
+{
+  "_from": "git+https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin.git",
+  "_id": "Smartech-Cordova-Android-GCM-Plugin@1.0.0",
+  "_inBundle": false,
+  "_location": "/Smartech-Cordova-Android-GCM-Plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin.git",
+    "rawSpec": "https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin.git",
+    "saveSpec": "git+https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin.git",
+    "fetchSpec": "https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin.git#cf0e42e4e5413f6af3314f8986682ad42a305a40",
+  "_spec": "https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin.git",
+  "_where": "/Users/admin/Desktop/smartech",
+  "author": {
+    "name": "Pradeep gupta"
+  },
+  "bugs": {
+    "url": "https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Smartech cordova plugin used for activity tracking in cordova Android application",
+  "homepage": "https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "Smartech-Cordova-Android-GCM-Plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NetcoreSolutions/Smartech-Cordova-Android-GCM-Plugin.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
