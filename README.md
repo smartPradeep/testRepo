@@ -57,39 +57,30 @@ import NetCorePush
 2. Add NetCore Application AppID in support in Finish Launching Methods
 (AppDelegate file)
 ```swift
-let netCore_AppID = "your App Id which you get from Netcore smartech admin
-panel"
-
+let netCore_AppID = "your App Id which you get from Netcore smartech admin panel"
 // Set up NetCore Application Id-------------------------------------
 NetCoreSharedManager.sharedInstance().handleApplicationLaunchEvent(launchOptions, forApplicationId: netCore_AppID)
-
 //set up push delegate
 NetCorePushTaskManager.sharedInstance().delegate = self
-
 // set up your third party framework initialization process as per their document
 ```
 3. Register Device With NetCore SDK (AppDelegate file)
 ```swift
-func application ( _ application : UIApplication,
-didRegisterForRemoteNotificationsWithDeviceToken deviceToken : Data) {
-
+func application ( _ application : UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken : Data) {
     //strEmail = your application identity
     // Register User Device with NetCore
     NetCoreInstallation.sharedInstance().netCorePushRegisteration(strEmail as! String!, withDeviceToken: deviceToken) {     (status) in }
-
 }
 ```
 
 4. Handle Push/Local Notification Delegate Events (AppDelegate file)
 ```swift
-func application ( _ application : UIApplication, didReceiveRemoteNotification
-userInfo : [ AnyHashable : Any ]) {
+func application ( _ application : UIApplication, didReceiveRemoteNotification userInfo : [ AnyHashable : Any ]) {
     // perform notification received/click action as per third party SDK as per their document
     NetCorePushTaskManager.sharedInstance().didReceiveRemoteNotification(userInfo)
 }
 
-func application (_ application : UIApplication , didReceive notification :
-UILocalNotification ){
+func application (_ application : UIApplication , didReceive notification : UILocalNotification ){
     NetCorePushTaskManager.sharedInstance().didReceiveLocalNotification(notification.userInfo)
 }
 
@@ -104,7 +95,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         NetCorePushTaskManager.sharedInstance().userNotificationdidReceive(response)
         }
     }
-    
 ```
 5. Handle Deep Linking
 ```swift
@@ -129,7 +119,6 @@ NetCoreInstallation.sharedInstance().netCorePushLogin(strEmail) {(statusCode:Int
 ```
 7. Logout
 ```swift
-// strEmail = pass your device identity
 NetCoreInstallation.sharedInstance().netCorePushLogout { (statusCode:Int) in }
 ```
 8. Profile Push
