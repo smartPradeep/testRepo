@@ -43,7 +43,7 @@ Background Mode -> Background fetch
 App Groups(Add one group with name “group.com.Smartech.com”)
 ```
 5. Create Bridge file in existing swift project if required and add Following code inside file.
-```swift
+```objc
 #import <NetCorePush/NetCorePush.h>
 ```
 
