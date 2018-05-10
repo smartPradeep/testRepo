@@ -73,10 +73,9 @@ NetCorePushTaskManager.sharedInstance().delegate = self
 func application ( _ application : UIApplication,
 didRegisterForRemoteNotificationsWithDeviceToken deviceToken : Data) {
 
-//strEmail = your application identity
-// Register User Device with NetCore
-NetCoreInstallation.sharedInstance().netCorePushRegisteration(strEmail as!
-String!, withDeviceToken: deviceToken) { (status) in }
+    //strEmail = your application identity
+    // Register User Device with NetCore
+    NetCoreInstallation.sharedInstance().netCorePushRegisteration(strEmail as! String!, withDeviceToken: deviceToken) {     (status) in }
 
 }
 ```
@@ -85,56 +84,48 @@ String!, withDeviceToken: deviceToken) { (status) in }
 ```swift
 func application ( _ application : UIApplication, didReceiveRemoteNotification
 userInfo : [ AnyHashable : Any ]) {
-// perform notification received/click action as per third party SDK as per their
-document
-NetCorePushTaskManager.sharedInstance().didReceiveRemoteNotification(userInfo)
+    // perform notification received/click action as per third party SDK as per their document
+    NetCorePushTaskManager.sharedInstance().didReceiveRemoteNotification(userInfo)
 }
 
 func application (_ application : UIApplication , didReceive notification :
 UILocalNotification ){
-NetCorePushTaskManager.sharedInstance().didReceiveLocalNotification(notification.u
-serInfo)
+    NetCorePushTaskManager.sharedInstance().didReceiveLocalNotification(notification.userInfo)
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-// called when application is open when user click on notification
-@objc (userNotificationCenter: didReceiveNotificationResponse :withCompletionHandler
-:)
-@available ( iOS 10.0 , * )
-func userNotificationCenter ( _ center : UNUserNotificationCenter, didReceive
-response : UNNotificationResponse, withCompletionHandler completionHandler :
-@escaping () -> Void ) {
-// perform notification received/click action as per third party SDK as per their
-document
-NetCorePushTaskManager.sharedInstance().userNotificationdidReceive(response)
-}
-}
+    // called when application is open when user click on notification
+    @objc (userNotificationCenter: didReceiveNotificationResponse :withCompletionHandler:)
+    @available ( iOS 10.0 , * )
+    func userNotificationCenter ( _ center : UNUserNotificationCenter, didReceive
+    response : UNNotificationResponse, withCompletionHandler completionHandler :
+    @escaping () -> Void ) {
+        // perform notification received/click action as per third party SDK as per their document
+        NetCorePushTaskManager.sharedInstance().userNotificationdidReceive(response)
+        }
+    }
+    
 ```
 5. Handle Deep Linking
 ```swift
-func application(_ application: UIApplication,
-open url: URL,
-sourceApplication: String?,
-annotation: Any) -> Bool{
-if url.absoluteString.lowercased().contains ("your app deep link"){
-// handle deep link here
-}
-return true
+func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+    if url.absoluteString.lowercased().contains ("your app deep link") {
+        // handle deep link here
+    }
+    return true
 }
 
 extension AppDelegate : NetCorePushTaskManagerDelegate {
-func handleNotificationOpenAction(_ userInfo: [AnyHashable : Any]!, deepLinkType
-strType: String!) {
-if strType .lowercased().contains ("your app deep link"){
-// handle deep link here
-}
+func handleNotificationOpenAction(_ userInfo: [AnyHashable : Any]!, deepLinkType strType: String!) {
+    if strType .lowercased().contains ("your app deep link"){
+        // handle deep link here
+     }
 }
 ```
 6. Login with NetCore
 ```swift
 // strEmail = pass your device identity
-NetCoreInstallation.sharedInstance().netCorePushLogin(strEmail) {
-(statusCode:Int) in }
+NetCoreInstallation.sharedInstance().netCorePushLogin(strEmail) {(statusCode:Int) in }
 ```
 7. Logout
 ```swift
@@ -164,14 +155,12 @@ You can use this events following ways
 10. Track normal event
 ```swift
 // for sending application launch event
-NetCoreAppTracking.sharedInstance().sendEvent(Int(UInt32(tracking_AppLaunch.ra
-wValue)), block: nil)
+NetCoreAppTracking.sharedInstance().sendEvent(Int(UInt32(tracking_AppLaunch.rawValue)), block: nil)
 ```
 11. Track event with custom payload
 ```swift
 //add To cart event with custom array of data
-NetCoreAppTracking.sharedInstance().sendEvent(withCustomPayload:
-Int(UInt32(tracking_PageBrowse.rawValue)), payload: arrayAddToCart , block: nil)#
+NetCoreAppTracking.sharedInstance().sendEvent(withCustomPayload:Int(UInt32(tracking_PageBrowse.rawValue)), payload: arrayAddToCart , block: nil)#
 ```
 12. To fetch delivered push notifications
 ```swift
