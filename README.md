@@ -59,17 +59,15 @@ import NetCorePush
 ```swift
 let netCore_AppID = "your App Id which you get from Netcore smartech admin
 panel"
-```
-// Set up NetCore Application Id-------------------------------------
-```swift
-NetCoreSharedManager.sharedInstance().handleApplicationLaunchEvent(launchOptions, forApplicationId: netCore_AppID)
-```
-//set up push delegate
-```swift
-NetCorePushTaskManager.sharedInstance().delegate = self
-```
-// set up your third party framework initialization process as per their document
 
+// Set up NetCore Application Id-------------------------------------
+NetCoreSharedManager.sharedInstance().handleApplicationLaunchEvent(launchOptions, forApplicationId: netCore_AppID)
+
+//set up push delegate
+NetCorePushTaskManager.sharedInstance().delegate = self
+
+// set up your third party framework initialization process as per their document
+```
 3. Register Device With NetCore SDK (AppDelegate file)
 ```swift
 func application ( _ application : UIApplication,
