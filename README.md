@@ -21,7 +21,15 @@ pod 'Netcore-Smartech-iOS-SDK'
 pod install
 ```
 
-5. Open App.xcworkspace and build.
+5. Add Following capability inside your application
+```swift
+Push Notification
+Keychain
+Background Mode -> Background fetch
+App Groups(Add one group with name “group.com.Smartech.com”)
+```
+
+6. Open App.xcworkspace and build.
 
 ## NetCore Manual Integration
 1. Download iOS SDK and Unzip the file. Open Framework folder - inside it you will
