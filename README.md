@@ -164,6 +164,34 @@ NetCoreAppTracking.sharedInstance().sendEvent(withCustomPayload:Int(UInt32(track
 let array : Array = netCoreSharedManager.sharedInstance().getNotifications()
 ```
 
+13. Integrating Rich Push Notifications into App
+    1) Add “Notification Service Extension” to your app. File->New->Target->Notification Service Extension. 
+    2) Click Next and when asked to “Activate”, Click yes.
+    3) Add “App Groups” to your apps Capabilities(Add one group with name “group.com.Smartech.com”).
+    4) Enable App groups in Service Extension too and select group with name “group.com.Smartech.com”.
+    5) Make Sure you have enabled “Background Mode -> Background fetch” in your apps Capabilities too.
+    
+14. Implementing Rich Push Notifications into App
+
+Remove all the code written in “didReceiveNotificationRequest” and “serviceExtensionTimeWillExpire” methods .
+1) Import NetCore Framework into Extension
+```swift
+import NetCorePush
+```
+2) Handle Notification Request
+```swift
+override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+    NetCoreNotificationService.sharedInstance().didReceive(requ est) { (contentToDeliver:UNNotificationContent) in
+    contentHandler(contentToDeliver) }
+}
+```
+3) Handle Notification Service Time Expire
+```swift
+override func serviceExtensionTimeWillExpire() {
+    NetCoreNotificationService.sharedInstance().serviceExtensionTimeWillExpire()
+}
+```
+
 ### Deployment Over Apple Store
 Add Following runscript in your application target ,when you are deploying application
 over apple store,this run script use remove unused architecture in release mode
