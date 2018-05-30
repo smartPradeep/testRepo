@@ -25,8 +25,7 @@ pod install
 ```swift
 Push Notification
 Keychain
-Background Mode -> Background fetch
-App Groups(Add one group with name “group.com.Smartech.com”)
+Background Mode -> Remote Notification
 ```
 
 6. Open App.xcworkspace and build.
@@ -47,8 +46,7 @@ JavaScriptCore
 ```swift
 Push Notification
 Keychain
-Background Mode -> Background fetch
-App Groups(Add one group with name “group.com.Smartech.com”)
+Background Mode -> Remote Notification
 ```
 5. Create Bridge file in existing swift project if required and add Following code inside file.
 ```objc
