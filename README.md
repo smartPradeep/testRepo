@@ -159,7 +159,7 @@ NetCoreAppTracking.sharedInstance().sendEvent(withCustomPayload:Int(UInt32(track
 ```
 12. To fetch delivered push notifications
 ```swift
-let array : Array = netCoreSharedManager.sharedInstance().getNotifications()
+let array : Array = NetCoreSharedManager.sharedInstance().getNotifications()
 ```
 
 ### Deployment Over Apple Store
