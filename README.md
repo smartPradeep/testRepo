@@ -120,6 +120,7 @@ func handleNotificationOpenAction(_ userInfo: [AnyHashable : Any]!, deepLinkType
     if strType .lowercased().contains ("your app deep link"){
         // handle deep link here
      }
+   }
 }
 ```
 6. Login with NetCore
