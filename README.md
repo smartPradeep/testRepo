@@ -89,9 +89,11 @@ func application ( _ application : UIApplication, didReceiveRemoteNotification u
 func application (_ application : UIApplication , didReceive notification : UILocalNotification ){
     NetCorePushTaskManager.sharedInstance().didReceiveLocalNotification(notification.userInfo)
 }
-
+```
+```swift
+ // called when application is open when user click on notification
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    // called when application is open when user click on notification
+   
     @objc (userNotificationCenter: didReceiveNotificationResponse :withCompletionHandler:)
     @available ( iOS 10.0 , * )
     func userNotificationCenter ( _ center : UNUserNotificationCenter, didReceive
@@ -110,7 +112,9 @@ func application(_ application: UIApplication, open url: URL, sourceApplication:
     }
     return true
 }
-
+```
+```swift
+//For Handling deep link
 extension AppDelegate : NetCorePushTaskManagerDelegate {
 func handleNotificationOpenAction(_ userInfo: [AnyHashable : Any]!, deepLinkType strType: String!) {
     if strType .lowercased().contains ("your app deep link"){
