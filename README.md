@@ -64,18 +64,24 @@ import NetCorePush
 (AppDelegate file)
 ```swift
 let netCore_AppID = "your App Id which you get from Netcore smartech admin panel"
-// Set up NetCore Application Id-------------------------------------
+// Set up NetCore  Application Id
 NetCoreSharedManager.sharedInstance().handleApplicationLaunchEvent(launchOptions, forApplicationId: netCore_AppID)
+
 //set up push delegate
 NetCorePushTaskManager.sharedInstance().delegate = self
+
 // set up your third party framework initialization process as per their document
 ```
 3. Register Device With NetCore SDK (AppDelegate file)
 ```swift
-func application ( _ application : UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken : Data) {
-    //strEmail = your application identity
-    // Register User Device with NetCore
-    NetCoreInstallation.sharedInstance().netCorePushRegisteration(strEmail as! String!, withDeviceToken: deviceToken) {     (status) in }
+func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+// Register device token with third party SDK as per their document
+
+//Identity must be “”(blank) or as per Primary key which defined on smartech Panel
+NetCoreInstallation.sharedInstance().netCorePushRegisteration(Identity, withDeviceToken: deviceToken) { (status) in
+        }
+ }
 }
 ```
 
@@ -125,8 +131,8 @@ func handleNotificationOpenAction(_ userInfo: [AnyHashable : Any]!, deepLinkType
 ```
 6. Login with NetCore
 ```swift
-// strEmail = pass your device identity
-NetCoreInstallation.sharedInstance().netCorePushLogin(strEmail) {(statusCode:Int) in }
+// Identity must be “”(blank) or as per Primary key which defined on smartech Panel
+NetCoreInstallation.sharedInstance().netCorePushLogin(Identity) {(statusCode:Int) in }
 ```
 7. Logout
 ```swift
@@ -134,10 +140,10 @@ NetCoreInstallation.sharedInstance().netCorePushLogout { (statusCode:Int) in }
 ```
 8. Profile Push
 ```swift
-// strEmail = pass your device identity
+// Identity must be “”(blank) or as per Primary key which defined on smartech Panel
 let info = ["name":"Tester", "age":"23", "mobile":"9898948849"]
 
-NetCoreInstallation.sharedInstance().netCoreProfilePush(strEmail, payload: ino, block: nil)
+NetCoreInstallation.sharedInstance().netCoreProfilePush(Identity, payload: ino, block: nil)
 ```
 9. Events Tracking:
 Following is the list of tracking events
@@ -147,8 +153,6 @@ tracking_AddToCart = 2,
 tracking_CheckOut = 3,
 tracking_CartExpiry = 4,
 tracking_RemoveFromCart = 5,
-tracking_FirstLaunch = 20,
-tracking_AppLaunch = 21
 ```
 You can use this events following ways
 
