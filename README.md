@@ -69,19 +69,14 @@ NetCoreSharedManager.sharedInstance().handleApplicationLaunchEvent(launchOptions
 
 //set up push delegate
 NetCorePushTaskManager.sharedInstance().delegate = self
-
-// set up your third party framework initialization process as per their document
 ```
 3. Register Device With NetCore SDK (AppDelegate file)
 ```swift
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
-// Register device token with third party SDK as per their document
-
 //Identity must be “”(blank) or as per Primary key which defined on smartech Panel
 NetCoreInstallation.sharedInstance().netCorePushRegisteration(Identity, withDeviceToken: deviceToken) { (status) in
         }
- }
 }
 ```
 
