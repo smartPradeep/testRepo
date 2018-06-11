@@ -212,6 +212,27 @@ NetCoreNotificationService.sharedInstance().serviceExtensionTimeWillExpire()
 <For details refer SDK-Integration-Steps.pdf>
 ```
 
+16. Implementing Carousel Push Notifications into App
+```swift
+i) Add “Notification Content Extension” to your app. File->New->Target- >Notification Content Extension.
+<For details refer SDK-Integration-Steps.pdf>
+       
+ii) Click Next and when asked to “Activate”, Click Activate.
+
+iii) Add “App Groups” to your apps Capabilities(Add one group with name “group.com.Smartech.com”).
+
+iv) Enable App groups in Service Extension too and select group with name “group.com.Smartech.com”.
+<For details refer SDK-Integration-Steps.pdf>
+
+v) Replace “MainInterface.storyboard” of Content Extension with the provided by us in "Rich Files".
+
+vi) In “Info.plist” file of Content Extension, replace “UNNotificationExtensionCategory” value with “SmartechPushCategory”.
+
+vii) In “Info.plist” file of Content Extension, add “UNNotificationExtensionDefaultContentHidden” Boolean value with “NO”.
+<For details refer SDK-Integration-Steps.pdf>
+
+viii) Replace “NotificationViewController” class files from the "Rich Files" folder into your project.
+```
 ### Deployment Over Apple Store
 Add Following runscript in your application target ,when you are deploying application
 over apple store,this run script use remove unused architecture in release mode
