@@ -199,14 +199,14 @@ import NetCorePush
 ii) Handle Notification Request
 ```swift
 override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-NetCoreNotificationService.sharedInstance().didReceive(request) { (contentToDeliver:UNNotificationContent) in
-contentHandler(contentToDeliver) }
+        NetCoreNotificationService.sharedInstance().didReceive(request) { (contentToDeliver:UNNotificationContent) in
+        contentHandler(contentToDeliver) }
 }
 ```
 iii) Handle Notification Service Time Expire
 ```swift
 override func serviceExtensionTimeWillExpire() { 
-NetCoreNotificationService.sharedInstance().serviceExtensionTimeWillExpire() 
+        NetCoreNotificationService.sharedInstance().serviceExtensionTimeWillExpire() 
 }
 
 <For details refer SDK-Integration-Steps.pdf>
