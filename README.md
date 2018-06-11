@@ -47,6 +47,7 @@ JavaScriptCore
 Push Notification
 Keychain
 Background Mode -> Remote Notification
+App Groups -> Create new group with name “group.com.Smartech.com”
 ```
 5. Create Bridge file in existing swift project if required and add Following code inside file.
 ```objc
@@ -124,23 +125,33 @@ func handleNotificationOpenAction(_ userInfo: [AnyHashable : Any]!, deepLinkType
    }
 }
 ```
-6. Login with NetCore
+6. Handle Interactive buttons
+```swift
+func application(_ application: UIApplication, handleActionWithIdentifier identifier:
+String?, forRemoteNotification userInfo: [AnyHashable : Any], withResponseInfo
+responseInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
+ NetCorePushTaskManager.sharedInstance().handleAction(withIdentifier:
+ identifier, forRemoteNotification: userInfo, withResponseInfo: responseInfo)
+ completionHandler()
+}
+```
+7. Login with NetCore
 ```swift
 // Identity must be “”(blank) or as per Primary key which defined on smartech Panel
 NetCoreInstallation.sharedInstance().netCorePushLogin(Identity) {(statusCode:Int) in }
 ```
-7. Logout
+8. Logout
 ```swift
 NetCoreInstallation.sharedInstance().netCorePushLogout { (statusCode:Int) in }
 ```
-8. Profile Push
+9. Profile Push
 ```swift
 // Identity must be “”(blank) or as per Primary key which defined on smartech Panel
 let info = ["name":"Tester", "age":"23", "mobile":"9898948849"]
 
 NetCoreInstallation.sharedInstance().netCoreProfilePush(Identity, payload: ino, block: nil)
 ```
-9. Events Tracking:
+10. Events Tracking:
 Following is the list of tracking events
 ```swift
 tracking_PageBrowse = 1,
@@ -151,21 +162,52 @@ tracking_RemoveFromCart = 5,
 ```
 You can use this events following ways
 
-10. Track normal event
+11. Track normal event
 ```swift
 // for sending application launch event
 NetCoreAppTracking.sharedInstance().sendEvent(Int(UInt32(tracking_AppLaunch.rawValue)), block: nil)
 ```
-11. Track event with custom payload
+12. Track event with custom payload
 ```swift
 //add To cart event with custom array of data
 NetCoreAppTracking.sharedInstance().sendEvent(withCustomPayload:Int(UInt32(tracking_PageBrowse.rawValue)), payload: arrayAddToCart , block: nil)#
 ```
-12. To fetch delivered push notifications
+13. To fetch delivered push notifications
 ```swift
 let notificationArray : Array = NetCoreSharedManager.sharedInstance().getNotifications()
 ```
+14. Integrating Rich Push Notifications into App
+```swift
+i) Add “Notification Service Extension” to your app. File->New->Target- >Notification Service Extension.
+<For details refer SDK-Integration-Steps.pdf>
+ii) Click Next and when asked to “Activate”, Click Activate.
+iii) Add “App Groups” to your apps Capabilities(Add one group with name “group.com.Smartech.com”).
+iv) Enable App groups in Service Extension too and select group with name “group.com.Smartech.com”.
+<For details refer SDK-Integration-Steps.pdf>
+```
+15. Implementing Rich Push Notifications into App
 
+Remove all the code written in “NotificationService” implementation part.
+```swift
+i) Import NetCore Framework into Extension
+```swift
+import NetCorePush
+```
+ii) Handle Notification Request
+```swift
+override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
+NetCoreNotificationService.sharedInstance().didReceive(request) { (contentToDeliver:UNNotificationContent) in
+contentHandler(contentToDeliver) }
+}
+```
+iii) Handle Notification Service Time Expire
+```swift
+override func serviceExtensionTimeWillExpire() {             NetCoreNotificationService.sharedInstance().serviceExtensionTimeWillExpire() 
+}
+```
+<For details refer SDK-Integration-Steps.pdf>
+
+```
 ### Deployment Over Apple Store
 Add Following runscript in your application target ,when you are deploying application
 over apple store,this run script use remove unused architecture in release mode
