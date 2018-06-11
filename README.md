@@ -188,7 +188,7 @@ iv) Enable App groups in Service Extension too and select group with name “gro
 15. Implementing Rich Push Notifications into App
 
 Remove all the code written in “NotificationService” implementation part.
-```swift
+
 i) Import NetCore Framework into Extension
 ```swift
 import NetCorePush
@@ -202,7 +202,8 @@ contentHandler(contentToDeliver) }
 ```
 iii) Handle Notification Service Time Expire
 ```swift
-override func serviceExtensionTimeWillExpire() {             NetCoreNotificationService.sharedInstance().serviceExtensionTimeWillExpire() 
+override func serviceExtensionTimeWillExpire() { 
+NetCoreNotificationService.sharedInstance().serviceExtensionTimeWillExpire() 
 }
 ```
 <For details refer SDK-Integration-Steps.pdf>
