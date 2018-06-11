@@ -211,7 +211,6 @@ NetCoreNotificationService.sharedInstance().serviceExtensionTimeWillExpire()
 ```
 <For details refer SDK-Integration-Steps.pdf>
 
-```
 ### Deployment Over Apple Store
 Add Following runscript in your application target ,when you are deploying application
 over apple store,this run script use remove unused architecture in release mode
