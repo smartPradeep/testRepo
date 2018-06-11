@@ -179,8 +179,11 @@ let notificationArray : Array = NetCoreSharedManager.sharedInstance().getNotific
 14. Integrating Rich Push Notifications into App
 i) Add “Notification Service Extension” to your app. File->New->Target- >Notification Service Extension.
 <For details refer SDK-Integration-Steps.pdf>
+       
 ii) Click Next and when asked to “Activate”, Click Activate.
+
 iii) Add “App Groups” to your apps Capabilities(Add one group with name “group.com.Smartech.com”).
+
 iv) Enable App groups in Service Extension too and select group with name “group.com.Smartech.com”.
 <For details refer SDK-Integration-Steps.pdf>
 
