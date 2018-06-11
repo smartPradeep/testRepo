@@ -190,7 +190,7 @@ iv) Enable App groups in Service Extension too and select group with name “gro
 ```
 15. Implementing Rich Push Notifications into App
 
-Remove all the code written in “NotificationService” implementation part.
+Remove all the code written in “NotificationService” implementation class.
 
 i) Import NetCore Framework into Extension
 ```swift
